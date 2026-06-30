@@ -1,9 +1,16 @@
-node_modules/
-.env
+# Claude files
 .claude/
 CLAUDE.md
 claude.md
+
+# Deployment docs
 DEPLOYMENT.md
 DEPLOYMENT.MD
 deployment.md
-.env.example
+
+# Secrets
+.env
+.env.local
+node_modules/
+dist/
+uploads/

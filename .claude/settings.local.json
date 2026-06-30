@@ -1,9 +1,0 @@
-{
-  "permissions": {
-    "allow": [
-      "Bash(node -e ' *)",
-      "Bash(node --input-type=module)",
-      "PowerShell(node -e \"console.log\\(require\\('C:/Users/brike/OneDrive/Desktop/Capstone V2/study-coach-ai/backend/node_modules/pdf-parse/package.json'\\).version\\)\")"
-    ]
-  }
-}
