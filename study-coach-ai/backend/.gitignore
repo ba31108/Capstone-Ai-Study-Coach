@@ -1,2 +1,9 @@
 node_modules/
 .env
+.claude/
+CLAUDE.md
+claude.md
+DEPLOYMENT.md
+DEPLOYMENT.MD
+deployment.md
+.env.example

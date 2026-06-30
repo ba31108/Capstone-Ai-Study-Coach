@@ -44,6 +44,8 @@ app.use('/api/study-plans', require('./routes/studyPlanRoutes'));
 app.use('/api/quizzes', require('./routes/quizRoutes'));
 app.use('/api/dashboard', require('./routes/dashboardRoutes'));
 app.use('/api/lectures', require('./routes/lectureRoutes'));
+app.use('/api/resources', require('./routes/resourceRoutes'));
+app.use('/api/admin', require('./routes/adminRoutes'));
 
 // Health check
 app.get('/', (req, res) => {

@@ -10,10 +10,30 @@ export const AuthProvider = ({ children }) => {
   useEffect(() => {
     const token = localStorage.getItem('token');
     const savedUser = localStorage.getItem('user');
-    if (token && savedUser) {
-      setUser(JSON.parse(savedUser));
+
+    if (!token || !savedUser) {
+      setLoading(false);
+      return;
     }
-    setLoading(false);
+
+    // Set stored user immediately so UI doesn't flash blank
+    const parsed = JSON.parse(savedUser);
+    setUser(parsed);
+
+    // Re-fetch from server to get authoritative role (handles stale localStorage)
+    api.get('/auth/profile')
+      .then(({ data }) => {
+        const updated = { ...data, token };
+        localStorage.setItem('user', JSON.stringify(updated));
+        setUser(updated);
+      })
+      .catch(() => {
+        // Token expired or invalid — force logout
+        localStorage.removeItem('token');
+        localStorage.removeItem('user');
+        setUser(null);
+      })
+      .finally(() => setLoading(false));
   }, []);
 
   const login = async (email, password) => {

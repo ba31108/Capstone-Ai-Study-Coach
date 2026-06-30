@@ -3,7 +3,7 @@ import { NavLink, useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
 import {
   LayoutDashboard, BookOpen, FileText, ClipboardList,
-  PenSquare, TrendingUp, Library, User, LogOut, Menu, X, GraduationCap, Brain,
+  PenSquare, TrendingUp, Library, User, LogOut, Menu, X, GraduationCap, Brain, Shield,
 } from 'lucide-react';
 
 const navItems = [
@@ -52,6 +52,17 @@ const SidebarContent = ({ onLinkClick, user, onLogout }) => (
     </nav>
 
     <div className="sidebar__footer">
+      {user?.role === 'admin' && (
+        <NavLink
+          to="/admin/dashboard"
+          className={({ isActive }) =>
+            `sidebar__link sidebar__link--admin ${isActive ? 'sidebar__link--active' : ''}`
+          }
+        >
+          <span className="sidebar__icon"><Shield size={16} /></span>
+          <span>Admin Panel</span>
+        </NavLink>
+      )}
       <div className="sidebar__user">
         <div className="sidebar__avatar">
           {user?.name?.charAt(0).toUpperCase()}
